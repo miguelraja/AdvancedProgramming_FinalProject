@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c8gi47c4ydokd"]
+
+[ext_resource type="Script" uid="uid://durjaw04dy4jb" path="res://General/game_over.gd" id="1_40baj"]
+[ext_resource type="Texture2D" uid="uid://bvfpegsyjf1jg" path="res://images/backgrounds/game_over.png" id="2_xlhvl"]
+[ext_resource type="FontFile" uid="uid://bosi6bt4f6awk" path="res://pixelart.ttf" id="3_d75t3"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1246756650]
+script = ExtResource("1_40baj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=125864455]
+position = Vector2(575.5, 325.5)
+scale = Vector2(0.50043404, 0.4976852)
+texture = ExtResource("2_xlhvl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=53757807]
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 1.0
+offset_right = 0.15185547
+offset_bottom = 1.0
+color = Color(0, 0, 0, 0.3529412)
+
+[node name="Label" type="Label" parent="." unique_id=400572335]
+anchors_preset = -1
+anchor_top = 0.147
+anchor_right = 1.003
+anchor_bottom = 0.26700002
+offset_top = 4.7440033
+offset_right = 0.5439453
+offset_bottom = 4.9839935
+theme_override_fonts/font = ExtResource("3_d75t3")
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="." unique_id=1263442160]
+anchors_preset = -1
+anchor_left = 0.41200003
+anchor_top = 0.441
+anchor_right = 0.58900005
+anchor_bottom = 0.537
+offset_left = 0.37597656
+offset_top = 0.23199463
+offset_right = 0.47192383
+offset_bottom = 3.0239868
+theme_override_fonts/font = ExtResource("3_d75t3")
+theme_override_font_sizes/font_size = 20
+text = "Restart game"
+
+[node name="main_menu" type="Button" parent="." unique_id=113903815]
+anchors_preset = -1
+anchor_left = 0.41200003
+anchor_top = 0.606
+anchor_right = 0.58900005
+anchor_bottom = 0.707
+offset_left = 0.37597656
+offset_top = 0.3119812
+offset_right = 0.47192383
+offset_bottom = -0.13601685
+theme_override_fonts/font = ExtResource("3_d75t3")
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="main_menu" to="." method="_on_main_menu_pressed"]

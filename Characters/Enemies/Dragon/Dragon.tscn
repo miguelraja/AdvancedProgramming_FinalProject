@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://c7sovy8gwh1fn"]
+
+[ext_resource type="Texture2D" uid="uid://57ocw8hh8l8e" path="res://images/enemies/dragon/Attack1.png" id="1_1e7ru"]
+[ext_resource type="Texture2D" uid="uid://bst15vgqepd3y" path="res://images/enemies/dragon/Attack2.png" id="2_3twtk"]
+[ext_resource type="Texture2D" uid="uid://bkouavtls56el" path="res://images/enemies/dragon/Attack3.png" id="3_dmypv"]
+[ext_resource type="Texture2D" uid="uid://bgs8qkw2glgym" path="res://images/enemies/dragon/Attack4.png" id="4_b4ir4"]
+[ext_resource type="Texture2D" uid="uid://b6ebhobkhnux4" path="res://images/enemies/dragon/Death1.png" id="5_8chph"]
+[ext_resource type="Texture2D" uid="uid://caecrx2qrtl0i" path="res://images/enemies/dragon/Death2.png" id="6_ttlhx"]
+[ext_resource type="Texture2D" uid="uid://doddgdmgf7x5y" path="res://images/enemies/dragon/Death3.png" id="7_elc4p"]
+[ext_resource type="Texture2D" uid="uid://cdouncsx6ywwc" path="res://images/enemies/dragon/Death4.png" id="8_q1cih"]
+[ext_resource type="Texture2D" uid="uid://clu4e2e6sgewd" path="res://images/enemies/dragon/Death5.png" id="9_7yecd"]
+[ext_resource type="Texture2D" uid="uid://bxrljywgmkmfp" path="res://images/enemies/dragon/Hurt1.png" id="10_ng4vs"]
+[ext_resource type="Texture2D" uid="uid://cdmu2hnybe1ps" path="res://images/enemies/dragon/Hurt2.png" id="11_uohav"]
+[ext_resource type="Texture2D" uid="uid://v4u386u88vuc" path="res://images/enemies/dragon/Idle1.png" id="12_r1sfa"]
+[ext_resource type="Texture2D" uid="uid://rwwr1vfxq1pl" path="res://images/enemies/dragon/Idle2.png" id="13_ta3qs"]
+[ext_resource type="Texture2D" uid="uid://dipug0hwri8pc" path="res://images/enemies/dragon/Idle3.png" id="14_6i6r7"]
+[ext_resource type="Texture2D" uid="uid://vu7pyuq5cuan" path="res://images/enemies/dragon/Walk1.png" id="15_nc2ml"]
+[ext_resource type="Texture2D" uid="uid://bw8isisrlq2o5" path="res://images/enemies/dragon/Walk2.png" id="16_5jhq3"]
+[ext_resource type="Texture2D" uid="uid://cy4n610tpd43b" path="res://images/enemies/dragon/Walk3.png" id="17_v5lkl"]
+[ext_resource type="Texture2D" uid="uid://dsaiajh5fm3yo" path="res://images/enemies/dragon/Walk4.png" id="18_ornd2"]
+[ext_resource type="Texture2D" uid="uid://y7gxy82610vk" path="res://images/enemies/dragon/Walk5.png" id="19_wo17c"]
+[ext_resource type="Script" uid="uid://by15pykvx7opg" path="res://Characters/Enemies/Dragon/dragon.gd" id="20_uui5o"]
+[ext_resource type="Texture2D" uid="uid://dw5q854ahduqc" path="res://images/enemies/dragon/Fire_Attack1.png" id="21_ka07u"]
+[ext_resource type="Texture2D" uid="uid://o7agwtajx84y" path="res://images/enemies/dragon/Fire_Attack2.png" id="22_h48uy"]
+[ext_resource type="Texture2D" uid="uid://bc2vn4cyhn56j" path="res://images/enemies/dragon/Fire_Attack3.png" id="23_n3ahr"]
+[ext_resource type="Texture2D" uid="uid://dndawabuae8a1" path="res://images/enemies/dragon/Fire_Attack4.png" id="24_tq6bw"]
+[ext_resource type="Texture2D" uid="uid://b0ii6uw2t1ybj" path="res://images/enemies/dragon/Fire_Attack5.png" id="25_t81gw"]
+[ext_resource type="Texture2D" uid="uid://dld7yn84g7nrr" path="res://images/enemies/dragon/Fire_Attack6.png" id="26_naqyf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3fae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1e7ru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3twtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dmypv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b4ir4")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8chph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ttlhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_elc4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q1cih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7yecd")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ng4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uohav")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r1sfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ta3qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6i6r7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nc2ml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wo17c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5jhq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v5lkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ornd2")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrpw8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_ka07u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_h48uy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_n3ahr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tq6bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_t81gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_naqyf")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_1e7ru"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == 'Player':
+		Global.loose_life()
+		print('player has been burnt')
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1e7ru"]
+radius = 14.142136
+height = 100.210236
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3twtk"]
+size = Vector2(162, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e7ru"]
+size = Vector2(474, 174)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1e7ru"]
+a = Vector2(19, 0)
+b = Vector2(173, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmypv"]
+size = Vector2(161, 73)
+
+[node name="Dragon" type="CharacterBody2D" unique_id=903331447]
+collision_layer = 2
+script = ExtResource("20_uui5o")
+
+[node name="DragonAnimated" type="AnimatedSprite2D" parent="." unique_id=1502019570]
+sprite_frames = SubResource("SpriteFrames_v3fae")
+animation = &"hurt"
+
+[node name="Fire" type="AnimatedSprite2D" parent="DragonAnimated" unique_id=1190306176]
+position = Vector2(106, 21)
+sprite_frames = SubResource("SpriteFrames_mrpw8")
+animation = &"attack"
+frame = 5
+frame_progress = 1.0
+
+[node name="FireArea" type="Area2D" parent="." unique_id=240301060]
+collision_layer = 4
+monitoring = false
+script = SubResource("GDScript_1e7ru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea" unique_id=309439115]
+position = Vector2(103, 25.000006)
+rotation = -1.0471976
+shape = SubResource("CapsuleShape2D_1e7ru")
+
+[node name="DragonDamage" type="Area2D" parent="." unique_id=1325030066]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonDamage" unique_id=1513376550]
+position = Vector2(-3, 25.5)
+shape = SubResource("RectangleShape2D_3twtk")
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=2018055355]
+position = Vector2(83, 0)
+target_position = Vector2(0, 68)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=62145198]
+wait_time = 3.0
+autostart = true
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=223465477]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1831970911]
+position = Vector2(27, 12)
+shape = SubResource("RectangleShape2D_1e7ru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1261164372]
+position = Vector2(-94, 64)
+shape = SubResource("SegmentShape2D_1e7ru")
+
+[node name="DragonBody" type="Area2D" parent="." unique_id=1571723607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonBody" unique_id=1265051199]
+position = Vector2(-3.5, 25.5)
+shape = SubResource("RectangleShape2D_dmypv")
+
+[connection signal="animation_finished" from="DragonAnimated" to="." method="_on_dragon_animated_animation_finished"]
+[connection signal="frame_changed" from="DragonAnimated" to="." method="_on_dragon_animated_frame_changed"]
+[connection signal="frame_changed" from="DragonAnimated" to="DragonAnimated" method="_on_frame_changed"]
+[connection signal="body_entered" from="FireArea" to="." method="_on_fire_area_body_entered"]
+[connection signal="body_entered" from="DragonDamage" to="." method="_on_dragon_damage_body_entered"]
+[connection signal="body_entered" from="DragonDamage" to="DragonAnimated" method="_on_dragon_damage_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="area_entered" from="DragonBody" to="." method="_on_dragon_body_area_entered"]

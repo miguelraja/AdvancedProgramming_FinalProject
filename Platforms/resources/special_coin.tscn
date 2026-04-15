@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bij2ral1wiyfi"]
+
+[ext_resource type="PackedScene" uid="uid://m4fp10i8wnjb" path="res://Platforms/resources/normal_coin.tscn" id="1_4xfro"]
+[ext_resource type="Texture2D" uid="uid://b2e1p3pqwi218" path="res://images/special_coins/Bronze_21.png" id="2_n2adg"]
+[ext_resource type="Texture2D" uid="uid://sfjeuvoluj5g" path="res://images/special_coins/Bronze_22.png" id="3_gbd4m"]
+[ext_resource type="Texture2D" uid="uid://wdrxm1ochp57" path="res://images/special_coins/Bronze_23.png" id="4_dg4au"]
+[ext_resource type="Texture2D" uid="uid://d152hhroifkpb" path="res://images/special_coins/Bronze_24.png" id="5_iufd2"]
+[ext_resource type="Texture2D" uid="uid://bys2ut4qmeg5d" path="res://images/special_coins/Bronze_25.png" id="6_lct2q"]
+[ext_resource type="Texture2D" uid="uid://cb8fvgc00sxcs" path="res://images/special_coins/Bronze_26.png" id="7_p6wdk"]
+[ext_resource type="Texture2D" uid="uid://cf2ef28hbya1o" path="res://images/special_coins/Bronze_27.png" id="8_v1mqy"]
+[ext_resource type="Texture2D" uid="uid://t2eg1whiin5j" path="res://images/special_coins/Bronze_28.png" id="9_iowuj"]
+[ext_resource type="Texture2D" uid="uid://b31tdl8us81k2" path="res://images/special_coins/Bronze_29.png" id="10_75ib3"]
+[ext_resource type="Texture2D" uid="uid://dt6j2ply2cmy" path="res://images/special_coins/Bronze_30.png" id="11_xask8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2who5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n2adg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gbd4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dg4au")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iufd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lct2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p6wdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v1mqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iowuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_75ib3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xask8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[node name="normal_coin" unique_id=1193629979 instance=ExtResource("1_4xfro")]
+value = 5
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=541926588]
+sprite_frames = SubResource("SpriteFrames_2who5")
+frame_progress = 0.5513925

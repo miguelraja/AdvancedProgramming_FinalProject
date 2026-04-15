@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cksg8arkowmx3"]
+
+[ext_resource type="FontFile" uid="uid://bosi6bt4f6awk" path="res://pixelart.ttf" id="1_11g6k"]
+[ext_resource type="Script" uid="uid://dhnc6mk0rbbnn" path="res://General/score_text.gd" id="2_rbmvk"]
+
+[node name="Area2D" type="Area2D" unique_id=1158467586]
+
+[node name="Label" type="Label" parent="." unique_id=658900683]
+offset_right = 175.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("1_11g6k")
+theme_override_font_sizes/font_size = 20
+text = " "
+script = ExtResource("2_rbmvk")
+metadata/_edit_use_anchors_ = true

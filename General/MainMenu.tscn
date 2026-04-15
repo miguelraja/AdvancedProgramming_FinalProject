@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://blh8tb26ttcnl"]
+
+[ext_resource type="Texture2D" uid="uid://dx2q65tqckvq3" path="res://images/backgrounds/main_menu.png" id="1_2rjjg"]
+[ext_resource type="Script" uid="uid://kvklkfvfvj5e" path="res://General/main_menu.gd" id="1_rrue7"]
+[ext_resource type="FontFile" uid="uid://bosi6bt4f6awk" path="res://pixelart.ttf" id="2_rrue7"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1853553315]
+script = ExtResource("1_rrue7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=989081609]
+position = Vector2(575.5, 325.49997)
+scale = Vector2(0.50043404, 0.4976852)
+texture = ExtResource("1_2rjjg")
+
+[node name="Label" type="Label" parent="." unique_id=2036895410]
+offset_left = 1.0
+offset_top = 47.0
+offset_right = 1152.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_rrue7")
+theme_override_font_sizes/font_size = 50
+text = "WELCOME!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=43549426]
+offset_left = 451.0
+offset_top = 185.0
+offset_right = 691.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("2_rrue7")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[node name="highscores" type="Label" parent="." unique_id=2016706290]
+anchors_preset = -1
+anchor_left = -0.003
+anchor_top = 0.41700003
+anchor_right = 1.0
+anchor_bottom = 0.596
+offset_left = -0.5439999
+offset_top = -0.21600342
+offset_bottom = -0.20800781
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_rrue7")
+theme_override_font_sizes/font_size = 30
+text = "High Scores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointToWrite" type="Node2D" parent="." unique_id=41944545]
+
+[node name="score_pointer" type="Marker2D" parent="PointToWrite" unique_id=424301795]
+position = Vector2(561, 333)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cv1sgjndnnel8"]
+
+[ext_resource type="Texture2D" uid="uid://7q0ttmqrdshc" path="res://images/Pad_1_3.png" id="1_h76ki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae556"]
+size = Vector2(73, 811.5)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1505293057]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230450833]
+position = Vector2(354, 307.99997)
+scale = Vector2(2.108019, 0.8896103)
+texture = ExtResource("1_h76ki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724816204]
+position = Vector2(351.25, 319.5)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ae556")

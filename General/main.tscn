@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bs6sfwnmtwbrl"]
+
+[ext_resource type="PackedScene" uid="uid://nxoq4ftsdld7" path="res://Characters/MainCharacter/Player_movement.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bym0nssaookv" path="res://Platforms/platform_points.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bw0rtmvv2abr1" path="res://General/point_counter.gd" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://yjoygw74gjoa" path="res://images/hearts/alive.png" id="4_3pxtl"]
+[ext_resource type="Script" uid="uid://b3gy5v2de4vam" path="res://General/life_bar.gd" id="4_dre17"]
+[ext_resource type="PackedScene" uid="uid://c7sovy8gwh1fn" path="res://Characters/Enemies/Dragon/Dragon.tscn" id="6_5ofkt"]
+
+[sub_resource type="GDScript" id="GDScript_h2yge"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+		print(\"you fell to the void!\")
+		_go_to_gameover()
+
+func _go_to_gameover() -> void:
+	get_tree().change_scene_to_file(\"res://GameOver.tscn\")
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(2310, 23)
+
+[node name="Main" type="Node2D" unique_id=1990356649]
+position = Vector2(185, 106)
+
+[node name="Player" parent="." unique_id=907364801 instance=ExtResource("1_0xm2m")]
+z_index = 3
+position = Vector2(-28, 341)
+
+[node name="platform_points" parent="." unique_id=1538002855 instance=ExtResource("2_0xm2m")]
+position = Vector2(319, 436)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=173362801]
+
+[node name="PointCounter" type="Label" parent="CanvasLayer" unique_id=1073142710]
+offset_right = 105.0
+offset_bottom = 45.0
+text = "points"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_h2yge")
+
+[node name="LifeBar" type="HBoxContainer" parent="CanvasLayer" unique_id=1490831758]
+offset_left = 743.0
+offset_top = 4.0
+offset_right = 1151.0
+offset_bottom = 92.0
+theme_override_constants/separation = 35
+script = ExtResource("4_dre17")
+
+[node name="heart1" type="TextureRect" parent="CanvasLayer/LifeBar" unique_id=182801597]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+texture = ExtResource("4_3pxtl")
+expand_mode = 1
+
+[node name="heart2" type="TextureRect" parent="CanvasLayer/LifeBar" unique_id=2010172332]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+texture = ExtResource("4_3pxtl")
+expand_mode = 1
+
+[node name="heart3" type="TextureRect" parent="CanvasLayer/LifeBar" unique_id=1729921787]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+texture = ExtResource("4_3pxtl")
+expand_mode = 1
+
+[node name="KillZone" type="Area2D" parent="." unique_id=871575006]
+position = Vector2(-83, 673)
+script = SubResource("GDScript_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1332396250]
+position = Vector2(788, -10)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Dragon" parent="." unique_id=903331447 instance=ExtResource("6_5ofkt")]
+position = Vector2(453, 326)
+
+[connection signal="body_entered" from="KillZone" to="Player" method="_on_kill_zone_body_entered"]
