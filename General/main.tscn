@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://bw0rtmvv2abr1" path="res://General/point_counter.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://yjoygw74gjoa" path="res://images/hearts/alive.png" id="4_3pxtl"]
 [ext_resource type="Script" uid="uid://b3gy5v2de4vam" path="res://General/life_bar.gd" id="4_dre17"]
-[ext_resource type="PackedScene" uid="uid://c7sovy8gwh1fn" path="res://Characters/Enemies/Dragon/Dragon.tscn" id="6_5ofkt"]
+[ext_resource type="PackedScene" uid="uid://be6x027dfbm2c" path="res://platforms_generator.tscn" id="7_ey7mc"]
+[ext_resource type="Texture2D" uid="uid://dcvh57vqu3q7e" path="res://images/backgrounds/original-053b9988aeae885f1e9d445e3eb53239.jpg" id="7_rsy6j"]
 
 [sub_resource type="GDScript" id="GDScript_h2yge"]
 script/source = "extends Area2D
@@ -84,7 +85,20 @@ script = SubResource("GDScript_h2yge")
 position = Vector2(788, -10)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="Dragon" parent="." unique_id=903331447 instance=ExtResource("6_5ofkt")]
-position = Vector2(453, 326)
+[node name="PlatformsGenerator" parent="." unique_id=1969491885 node_paths=PackedStringArray("player") instance=ExtResource("7_ey7mc")]
+position = Vector2(459.44537, 11.8638)
+player = NodePath("../Player")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1343497063]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1058092258]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1390, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1862813524]
+position = Vector2(-514, -227)
+scale = Vector2(2, 4)
+texture = ExtResource("7_rsy6j")
+centered = false
 
 [connection signal="body_entered" from="KillZone" to="Player" method="_on_kill_zone_body_entered"]

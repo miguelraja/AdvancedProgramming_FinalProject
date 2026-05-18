@@ -320,9 +320,12 @@ monitoring = false
 position = Vector2(19, 26)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_a0htt")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533774362]
 position = Vector2(-2, 8.5)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1377285821]
 
 [connection signal="animation_finished" from="Body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

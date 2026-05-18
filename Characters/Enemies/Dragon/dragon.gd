@@ -24,7 +24,7 @@ func _physics_process(delta):
 	velocity.x = direction * speed
 	move_and_slide()
 	
-	if velocity.x != 0:
+	if velocity.x != 0 and sprite_dragon.animation == "walk":
 		sprite_dragon.play("walk")
 		sprite_dragon.flip_h = (direction < 0)
 
@@ -36,28 +36,29 @@ func turnaround():
 	sprite_fire.position.x *= -1
 	sprite_fire.flip_h = (direction < 0)
 
+# --- CORRECCIÓN: El temporizador ahora controla el ritmo de ataques reales ---
 func _on_attack_timer_timeout():
-	attack()
+	if player_on_range and sprite_dragon.animation != "death":
+		attack()
 
+# --- CORRECCIÓN: Eliminado el bucle infinito que congelaba al dragón ---
 func attack():
-	if not player_on_range: return
-	var last_speed = speed
-	speed = 0
-	
+	speed = 0 # Detener al dragón para que no camine mientras escupe fuego
 	sprite_dragon.play("attack")
 	
-	if player_on_range:
-		await get_tree().create_timer(1.0).timeout
-		attack() 
-	else:
-		speed = last_speed
+	# Esperamos a que termine su animación completa de ataque
+	await sprite_dragon.animation_finished
+	
+	# Si no ha muerto durante el ataque, vuelve a caminar normal
+	if sprite_dragon.animation != "death":
+		speed = 50.0
+		sprite_dragon.play("walk")
 
 func _process(delta: float) -> void:
 	pass
 
 func _on_frame_changed() -> void:
 	if sprite_dragon.animation == "attack":
-
 		if sprite_dragon.frame == 3:
 			blow_fire()
 			
@@ -83,9 +84,12 @@ func _on_dragon_body_area_entered(area: Area2D) -> void:
 		kill_dragon()
 
 func kill_dragon():
+	speed = 0 # Evita que el dragón se siga moviendo mientras hace la animación de morir
 	sprite_dragon.play("death")
 	$DragonDamage.monitoring = false
 	$FireArea.monitoring = false
+	if has_node("AttackArea"):
+		$AttackArea.monitoring = false
 	await sprite_dragon.animation_finished
 	queue_free()
 	Global.add_points(10)
@@ -93,11 +97,12 @@ func kill_dragon():
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		player_on_range = true
+		if sprite_dragon.animation != "attack" and sprite_dragon.animation != "death":
+			attack() # Ataca inmediatamente al ver al jugador
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.name == 'Player':
 		player_on_range = false
-
 
 func _on_dragon_animated_frame_changed() -> void:
 	if sprite_dragon.animation == "attack":
@@ -106,9 +111,9 @@ func _on_dragon_animated_frame_changed() -> void:
 			sprite_fire.play("attack")
 			$FireArea.monitoring = true
 
-
 func _on_dragon_animated_animation_finished() -> void:
 	if sprite_dragon.animation == "attack":
 		sprite_fire.hide() 
 		$FireArea.monitoring = false
-		sprite_dragon.play("walk")
+		if sprite_dragon.animation != "death":
+			sprite_dragon.play("walk")

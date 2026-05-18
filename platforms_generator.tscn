@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://be6x027dfbm2c"]
+
+[ext_resource type="Script" uid="uid://cio7vjvq611bc" path="res://platforms_generator.gd" id="1_8wd2m"]
+[ext_resource type="PackedScene" uid="uid://cv1sgjndnnel8" path="res://Platforms/platform_basic.tscn" id="2_8wd2m"]
+[ext_resource type="PackedScene" uid="uid://miuwhlp2bn7b" path="res://Platforms/platform_enemy.tscn" id="3_oks13"]
+[ext_resource type="PackedScene" uid="uid://bspmns662cgeq" path="res://Platforms/platform_point_Enemy.tscn" id="4_jydhy"]
+[ext_resource type="PackedScene" uid="uid://bym0nssaookv" path="res://Platforms/platform_points.tscn" id="5_77uok"]
+
+[node name="PlatformsGenerator" type="Node2D" unique_id=1969491885]
+script = ExtResource("1_8wd2m")
+platform_types = Array[PackedScene]([ExtResource("2_8wd2m"), ExtResource("3_oks13"), ExtResource("5_77uok"), ExtResource("4_jydhy")])

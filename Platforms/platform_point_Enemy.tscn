@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bspmns662cgeq"]
+
+[ext_resource type="Script" uid="uid://ckodkeayar1a8" path="res://Platforms/platform_point_enemy.gd" id="1_hglc7"]
+[ext_resource type="Texture2D" uid="uid://7q0ttmqrdshc" path="res://images/Pad_1_3.png" id="2_hglc7"]
+[ext_resource type="PackedScene" uid="uid://c7sovy8gwh1fn" path="res://Characters/Enemies/Dragon/Dragon.tscn" id="3_hglc7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(78.99997, 806)
+
+[node name="platform_pointEnemy" type="StaticBody2D" unique_id=1538002855]
+script = ExtResource("1_hglc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131621107]
+scale = Vector2(2.108019, 0.8896103)
+texture = ExtResource("2_hglc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069875804]
+position = Vector2(0, 15)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=807543879]
+
+[node name="coin1" type="Marker2D" parent="SpawnPoints" unique_id=1738827913]
+z_index = 5
+position = Vector2(-258, -61)
+
+[node name="coin4" type="Marker2D" parent="SpawnPoints" unique_id=504161732]
+z_index = 5
+position = Vector2(102, -61)
+
+[node name="Dragon" parent="." unique_id=903331447 instance=ExtResource("3_hglc7")]
+position = Vector2(-29, -96)
