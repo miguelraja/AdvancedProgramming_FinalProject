@@ -166,77 +166,79 @@ size = Vector2(162, 73)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1e7ru"]
 size = Vector2(474, 174)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmypv"]
+size = Vector2(161, 73)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1e7ru"]
 a = Vector2(19, 0)
 b = Vector2(173, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmypv"]
-size = Vector2(161, 73)
 
 [node name="Dragon" type="CharacterBody2D" unique_id=903331447]
 collision_layer = 2
 script = ExtResource("20_uui5o")
 
-[node name="DragonAnimated" type="AnimatedSprite2D" parent="." unique_id=1502019570]
+[node name="body" type="Node2D" parent="." unique_id=990182196]
+
+[node name="DragonAnimated" type="AnimatedSprite2D" parent="body" unique_id=1502019570]
 sprite_frames = SubResource("SpriteFrames_v3fae")
 animation = &"hurt"
 
-[node name="Fire" type="AnimatedSprite2D" parent="DragonAnimated" unique_id=1190306176]
+[node name="Fire" type="AnimatedSprite2D" parent="body/DragonAnimated" unique_id=1190306176]
 position = Vector2(106, 21)
 sprite_frames = SubResource("SpriteFrames_mrpw8")
 animation = &"attack"
 frame = 5
 frame_progress = 1.0
 
-[node name="FireArea" type="Area2D" parent="." unique_id=240301060]
+[node name="FireArea" type="Area2D" parent="body" unique_id=240301060]
 collision_layer = 4
 monitoring = false
 script = SubResource("GDScript_1e7ru")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea" unique_id=309439115]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/FireArea" unique_id=309439115]
 position = Vector2(103, 25.000006)
 rotation = -1.0471976
 shape = SubResource("CapsuleShape2D_1e7ru")
 
-[node name="DragonDamage" type="Area2D" parent="." unique_id=1325030066]
+[node name="DragonDamage" type="Area2D" parent="body" unique_id=1325030066]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonDamage" unique_id=1513376550]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/DragonDamage" unique_id=1513376550]
 position = Vector2(-3, 25.5)
 shape = SubResource("RectangleShape2D_3twtk")
 
-[node name="FloorDetector" type="RayCast2D" parent="." unique_id=2018055355]
+[node name="FloorDetector" type="RayCast2D" parent="body" unique_id=2018055355]
 position = Vector2(83, 0)
 target_position = Vector2(0, 68)
 
-[node name="AttackTimer" type="Timer" parent="." unique_id=62145198]
-wait_time = 3.0
-autostart = true
-
-[node name="AttackArea" type="Area2D" parent="." unique_id=223465477]
+[node name="AttackArea" type="Area2D" parent="body" unique_id=223465477]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1831970911]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/AttackArea" unique_id=1831970911]
 position = Vector2(27, 12)
 shape = SubResource("RectangleShape2D_1e7ru")
+
+[node name="DragonBody" type="Area2D" parent="body" unique_id=1571723607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/DragonBody" unique_id=1265051199]
+position = Vector2(-3.5, 25.5)
+shape = SubResource("RectangleShape2D_dmypv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1261164372]
 position = Vector2(-94, 64)
 shape = SubResource("SegmentShape2D_1e7ru")
 
-[node name="DragonBody" type="Area2D" parent="." unique_id=1571723607]
+[node name="AttackTimer" type="Timer" parent="." unique_id=62145198]
+wait_time = 3.0
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonBody" unique_id=1265051199]
-position = Vector2(-3.5, 25.5)
-shape = SubResource("RectangleShape2D_dmypv")
-
-[connection signal="animation_finished" from="DragonAnimated" to="." method="_on_dragon_animated_animation_finished"]
-[connection signal="frame_changed" from="DragonAnimated" to="." method="_on_dragon_animated_frame_changed"]
-[connection signal="frame_changed" from="DragonAnimated" to="DragonAnimated" method="_on_frame_changed"]
-[connection signal="body_entered" from="FireArea" to="." method="_on_fire_area_body_entered"]
-[connection signal="body_entered" from="DragonDamage" to="." method="_on_dragon_damage_body_entered"]
-[connection signal="body_entered" from="DragonDamage" to="DragonAnimated" method="_on_dragon_damage_body_entered"]
+[connection signal="animation_finished" from="body/DragonAnimated" to="." method="_on_dragon_animated_animation_finished"]
+[connection signal="frame_changed" from="body/DragonAnimated" to="." method="_on_dragon_animated_frame_changed"]
+[connection signal="frame_changed" from="body/DragonAnimated" to="body/DragonAnimated" method="_on_frame_changed"]
+[connection signal="body_entered" from="body/FireArea" to="." method="_on_fire_area_body_entered"]
+[connection signal="body_entered" from="body/DragonDamage" to="." method="_on_dragon_damage_body_entered"]
+[connection signal="body_entered" from="body/DragonDamage" to="body/DragonAnimated" method="_on_dragon_damage_body_entered"]
+[connection signal="body_entered" from="body/AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="body/AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="area_entered" from="body/DragonBody" to="." method="_on_dragon_body_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-[connection signal="area_entered" from="DragonBody" to="." method="_on_dragon_body_area_entered"]
